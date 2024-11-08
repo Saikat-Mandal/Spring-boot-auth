@@ -14,26 +14,42 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/")
+@RequestMapping("/api/v1/")
 public class UserController {
 
     private final UserService userService;
     private final AuthService authService;
 
+
+//    test ADMIN ROLE
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin")
     public ResponseEntity<String> helloAdmin(){
         return ResponseEntity.ok("Hello Admin");
     }
 
+//    test USER ROLE
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/user")
     public ResponseEntity<String> helloUser(){
         return ResponseEntity.ok("Hello User");
     }
 
-    @GetMapping("/test")
-    public String test() {
+//    get user by id
+    @GetMapping("/user/{userId}")
+    public String getUserById(@PathVariable Integer userId) {
+        return "This endpoint is accessible without specific role";
+    }
+
+//    get all users
+    @GetMapping("/user")
+    public String getAllUsers(@PathVariable Integer userId) {
+        return "This endpoint is accessible without specific role";
+    }
+
+//    delete a user
+    @DeleteMapping("/user/{userId}")
+    public String deleteUserById(@PathVariable Integer userId) {
         return "This endpoint is accessible without specific role";
     }
 

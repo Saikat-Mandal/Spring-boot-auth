@@ -64,7 +64,8 @@ public class AuthServiceImpl implements AuthService {
 
         // Assign default ROLE_USER role
         Role userRole = roleRepository.findByName("ROLE_USER")
-                .orElseThrow(() -> new RuntimeException("User Role not found in the database"));
+                .orElseThrow(() -> new RuntimeException("Specified Role not found in the database"));
+
         user.setRoles(Collections.singleton(userRole));
 
         return userRepository.save(user);

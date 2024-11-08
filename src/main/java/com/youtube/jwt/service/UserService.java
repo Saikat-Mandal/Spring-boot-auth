@@ -18,8 +18,6 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
-//    private final PasswordEncoder passwordEncoder;
-//    private final RoleRepository roleRepository;
 
     public User getUserById(long id){
         return userRepository.findById(id).orElse(null);
