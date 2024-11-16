@@ -36,21 +36,21 @@ public class UserController {
     }
 
 //    get user by id
-    @GetMapping("/user/{userId}")
-    public String getUserById(@PathVariable Integer userId) {
-        return "This endpoint is accessible without specific role";
-    }
+//    @GetMapping("/user/{userId}")
+//    public String getUserById(@PathVariable Integer userId) {
+//        return "This endpoint is accessible without specific role";
+//    }
 
 //    get all users
-    @GetMapping("/user")
-    public String getAllUsers(@PathVariable Integer userId) {
-        return "This endpoint is accessible without specific role";
-    }
+//    @GetMapping("/user")
+//    public String getAllUsers(@PathVariable Integer userId) {
+//        return "This endpoint is accessible without specific role";
+//    }
 
 //    delete a user
-    @DeleteMapping("/user/{userId}")
-    public String deleteUserById(@PathVariable Integer userId) {
-        return "This endpoint is accessible without specific role";
-    }
+//    @DeleteMapping("/user/{userId}")
+//    public String deleteUserById(@PathVariable Integer userId) {
+//        return "This endpoint is accessible without specific role";
+//    }
 
 }
