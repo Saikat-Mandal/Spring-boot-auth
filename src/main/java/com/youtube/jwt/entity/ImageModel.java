@@ -6,25 +6,17 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@Builder
 @AllArgsConstructor
-@Table(name="image")
+@NoArgsConstructor
+@Table(name="images")
 public class ImageModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String name;
-    private String type;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String imageUrl;
 
-    @Lob
-    @Column(name="imageData" , length = 50000000)
-    private byte[] imageData;
-
-    public ImageModel(String name, String type, byte[] imageData) {
-        this.name = name;
-        this.type = type;
-        this.imageData = imageData;
-    }
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false) // Foreign key reference to Product
+    private Product product;
 }

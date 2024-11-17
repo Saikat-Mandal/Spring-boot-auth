@@ -6,13 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name="products")
 public class Product {
 
     @Id
@@ -25,16 +26,12 @@ public class Product {
     private Double actualPrice;
     private Integer quantity;
 
-    @ManyToMany(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "product_images",
-            joinColumns = {
-                    @JoinColumn(name="product_id")
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "image_id")
-            }
-    )
-    private Set<ImageModel> productImages;
+
+    @OneToMany(mappedBy = "product" , cascade = CascadeType.ALL , fetch = FetchType.LAZY , orphanRemoval = true)
+    private List<ImageModel> productImages;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
 }
